@@ -34,6 +34,7 @@ router.post("/getInvoice", (req, res) => {
 
   const result = verifyBody(data)
   if (result.success) {
+    data.customerName=req.body.name;
     getInvoice(data).then(pdf => {
       res.status(200)
       res.contentType("application/pdf");
